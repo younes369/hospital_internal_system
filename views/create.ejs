@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../not-global.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('./partials/header'); %>
+        <main>
+
+            <div class="s-container">
+                <form  method="POST">
+                    <h1>Should you have any questions, please do not hesitate to contact me :</h1>
+
+                    <div class="contentform">
+                        <div id="sendmessage"> Your message has been sent successfully. Thank you. </div>
+
+
+                        <div class="leftcontact">
+                            <div class="form-group">
+                                <p>Name <span>*</span></p>
+                                <span class="icon-case"><i class="fa fa-user"></i></span>
+                                <input type="text" name="Name" id="Name" data-rule="required"
+                                    data-msg="Vérifiez votre saisie sur les champs : Le champ 'Prénom' doit être renseigné." />
+                                <div class="validation"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <p>SSN <span>*</span></p>
+                                <span class="icon-case"><i class="fa fa-envelope-o"></i></span>
+                                <input name="SSN" id="SSN"
+                                    data-msg="Vérifiez votre saisie sur les champs : Le champ 'E-mail' est obligatoire." />
+                                <div class="validation"></div>
+                            </div>
+                            <%if(add=='Patient'|| add=='Doctor' ){%>
+                                <div class="form-group">
+                                    <p>Address <span>*</span></p>
+                                    <span class="icon-case"><i class="fa fa-home"></i></span>
+                                    <input type="text" name="Address" id="Address" data-rule="required"
+                                        data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné." />
+                                    <div class="validation"></div>
+                                </div>
+                                <%}%>
+                                    <%if(add=='Nurse' ){%>
+
+                                        <div class="form-group">
+                                            <p>Gender <span>*</span></p>
+                                            <span class="icon-case"><i class="fa fa-home"></i></span>
+                                            <input type="text" name="Gender" id="Gender" data-rule="required"
+                                                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Société' doit être renseigné." />
+                                            <div class="validation"></div>
+                                        </div>
+                                        <%}%>
+
+                        </div>
+
+                        <div class="rightcontact">
+                            <%if(add=='Patient' ){%>
+
+                                <div class="form-group">
+                                    <p>Diseas <span>*</span></p>
+                                    <span class="icon-case"><i class="fa fa-building-o"></i></span>
+                                    <input type="text" name="Diseas" id="Diseas" data-rule="required"
+                                        data-msg="Vérifiez votre saisie sur les champs : Le champ 'Ville' doit être renseigné." />
+                                    <div class="validation"></div>
+                                </div>
+                                <%}%>
+                                    <%if(add=='Patient' ){%>
+
+                                        <div class="form-group">
+                                            <p>Phone number <span>*</span></p>
+                                            <span class="icon-case"><i class="fa fa-phone"></i></span>
+                                            <input type="text" name="phone" id="phone" data-rule="maxlen:10"
+                                                data-msg="Vérifiez votre saisie sur les champs : Le champ 'Téléphone' doit être renseigné. Minimum 10 chiffres" />
+                                            <div class="validation"></div>
+                                        </div>
+                                        <%}%>
+                                            <%if(add=='Patient' ){%>
+
+                                                <div class="form-group">
+                                                    <p>Treatment <span>*</span></p>
+                                                    <span class="icon-case"><i class="fa fa-comments-o"></i></span>
+                                                    <textarea name="message" rows="14" data-rule="required"
+                                                        data-msg="Vérifiez votre saisie sur les champs : Le champ 'Message' doit être renseigné."></textarea>
+                                                    <div class="validation"></div>
+                                                </div>
+                                                <%}%>
+                        </div>
+                    </div>
+                    <button type="submit" class="bouton-contact">Send</button>
+
+                </form>
+
+            </div>
+        </main>
+</body>
+
+</html>

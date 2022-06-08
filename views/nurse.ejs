@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../not-global.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('./partials/header'); %>
+        <main>
+
+            <div class="s-container">
+
+                <div class="LeftSec">
+                    <div class="user">
+                        <div class="user-icon">
+
+                        </div>
+                        <h2>
+                            <%=result[0][0].Name%>
+                        </h2>
+                    </div>
+                    <div class="tabs">
+                        <div class="tab">
+
+                            <h2>Nurses' SSN</h2>
+                            <div class="info">
+                                <p>
+                                    <%=result[0][0].SSN%>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab">
+
+                            <h2>Nurses' Address</h2>
+                            <div class="info">
+                                <p>
+                                    <%=result[0][0].Address%>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab">
+
+                            <h2>Nurses' Gender</h2>
+                            <div class="info">
+                                <p>
+                                    <%=result[0][0].Gender%>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-button">
+                        <button onclick="Delete(`/Nurses/${<%=result[0][0].SSN%>}`)"
+                            class="custom-button red-button">
+                            <img src="../media/delete.svg" alt="" srcset="">
+                            <h2>Delete</h2>
+                        </button>
+                    </div>
+                    <div class="submit-button">
+                        <button onclick="" class="custom-button yellow-button">
+                            <img src="../media/edit.svg" alt="" srcset="">
+                            <h2>Edit</h2>
+                        </button>
+                    </div>
+                </div>
+                <div class="right-sec">
+                    <%if(result[1].length==0){%>
+                        <img src="../media/sad-face.svg" alt="" srcset="">
+                        <%}else{%>
+
+                            <h1>Related Data:</h1>
+                            <h3>List of patients beimg taken care of by the nurse:</h3>
+                            <div class="wrapper">
+
+                                <div class="table">
+
+                                    <div class="row header">
+                                        <div class="cell">
+                                            ID
+                                        </div>
+                                        <div class="cell">
+                                            Name
+                                        </div>
+                                        <div class="cell">
+                                            SSN
+                                        </div>
+                                        <div class="cell">
+                                            Phone Number
+                                        </div>
+                                        <div class="cell">
+                                            Diseas
+                                        </div>
+                                        <div class="cell">
+                                            Address
+                                        </div>
+                                        <div class="cell">
+                                            Treatment
+                                        </div>
+                                    </div>
+                                    <% result[2].forEach(element=> { %>
+                                        <% var url=`/Patients/${element.P_ID}`%>
+                                            <% result[1].forEach((Patient)=> {%>
+                                                <% if(Patient.P_ID==element.P_ID){%>
+                                                    <div class="row">
+                                                        <div class="cell" data-title="Name">
+                                                            <a href=<%=url%> >
+                                                                <%= element.P_ID %>
+                                                            </a>
+                                                        </div>
+                                                        <div class="cell" data-title="Age">
+                                                            <a href=<%=url%> >
+                                                                <%= element.Name %>
+                                                            </a>
+                                                        </div>
+                                                        <div class="cell" data-title="Occupation">
+                                                            <a href=<%=url%> >
+                                                                <%= element.SSN %>
+                                                            </a>
+                                                        </div>
+                                                        <div class="cell" data-title="Occupation">
+                                                            <a href=<%=url%> >
+                                                                <%= element.Phone_Num %>
+                                                            </a>
+                                                        </div>
+                                                        <div class="cell" data-title="Occupation">
+                                                            <a href=<%=url%> >
+                                                                <%= element.Diseas %>
+                                                            </a>
+                                                        </div>
+                                                        <div class="cell" data-title="Location">
+                                                            <a href=<%=url%> >
+                                                                <%= element.Address %>
+                                                            </a>
+                                                        </div>
+                                                        <div class="cell" data-title="Occupation">
+                                                            <a href=<%=url%> >
+                                                                <%= element.Treatment%>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <% }%>
+                                                        <% }) %>
+                                                            <% }) %>
+                                </div>
+                            </div>
+                            <%}%>
+                </div>
+            </div>
+        </main>
+</body>
+<script>
+    async function Delete(url) {
+        console.log("clicked")
+        // Awaiting fetch which contains 
+        // method, headers and content-type
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+        // Awaiting for the resource to be deleted
+        const resData = 'resource deleted...';
+        // Return response data 
+        return resData;
+    }
+</script>
+</html>

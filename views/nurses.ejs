@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="../Doctors/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <%- include('./partials/header'); %>
+        <main>
+            <div class="container D-container">
+                <div class="title">
+                    <h1>List of Nurses:</h1>
+                </div>
+                <div class="wrapper">
+
+                    <div class="table">
+
+                        <div class="row header">
+                            <div class="cell">
+                                Gender
+                            </div>
+                            <div class="cell">
+                                Name
+                            </div>
+                            <div class="cell">
+                                SSN
+                            </div>
+                            <div class="cell">
+                                Address
+                            </div>
+                        </div>
+                        <% result.forEach(element=> { %>
+                            <% var url=`/Nurses/${element.SSN}`%>
+                                <div class="row">
+                                    <div class="cell" data-title="Name">
+                                        <a href=<%=url%> >
+                                            <%= element.Gender %>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Age">
+                                        <a href=<%=url%> >
+                                            <%= element.Name %>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Occupation">
+                                        <a href=<%=url%> >
+                                            <%= element.SSN %>
+                                        </a>
+                                    </div>
+                                    <div class="cell" data-title="Location">
+                                        <a href=<%=url%> >
+                                            <%= element.Address %>
+                                        </a>
+                                    </div>
+                                </div>
+                                <% }) %>
+                    </div>
+                </div>
+                <div class="submit-button">
+                    <button class="custom-button neutral-button">
+                        <a href="/Doctors/add">Add New Nurses</a>
+                    </button>
+                </div>
+            </div>
+        </main>
+</body>
+
+</html>

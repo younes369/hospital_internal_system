@@ -1,0 +1,6 @@
+{
+    "Doctors":["Address","Name","SSN","IDs"],
+    "Nurses":["Address","Name","SSN","Gender"],
+    "Patients":["Address","Name","SSN","IDs","Phone Number","Diseas","Treatment"]
+
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./global.css">
+    <link rel="stylesheet" href="./home/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <%- include('./partials/HomeHeader'); %>
+        <main class="container">
+            <% for (var key in cardData) {%>
+                <% var path=`./media/${key}-icon.svg`;%>
+                <% var url=`/${key}`;%>
+                    <div class="card">
+                        <div class="container topCard">
+                            <img src=<%=path%> alt="" srcset="">
+                            <h1>
+                                <%=key%>
+                            </h1>
+                        </div>
+                        <div class=" container midCard">
+                            <% cardData[key].forEach(element=> { %>
+                                <div class="container list-item">
+                                    <img src="./media/arrow.svg" alt="" srcset="">
+                                    <h3>
+                                        <%=element%>
+                                    </h3>
+
+                                </div>
+                                <%});%>
+                        </div>
+                        <div class="container lowerCard">
+                            <div class="button">
+                                <a href=<%=url%>>See Full List!</a>
+                            </div>
+                        </div>
+                    </div>
+                    <%}%>
+
+        </main>
+
+</body>
+
+</html>
